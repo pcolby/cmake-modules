@@ -1,7 +1,14 @@
 # - Find PHP
-# This module finds if php-dev is installed and determines where the include files
-# and libraries are.  This code sets the following variables:
+# This module finds if PHP is installed and determines where the include files
+# and libraries are. 
 #
+# Note, unlike the FindPHP4 module, this module uses the php-config script to
+# determine information about the installed PHP configuration.  For Linux
+# distributions, this script is normally installed as part of some php-dev or
+# php-devel package. See http://php.net/manual/en/install.pecl.php-config.php
+# for php-config documentation.
+#
+# This code sets the following variables:
 #  PHP_CONFIG_DIR        = directory containing PHP configuration files
 #  PHP_CONFIG_EXECUTABLE = full path to the php-config binary
 #  PHP_EXECUTABLE        = full path to the php5 binary
@@ -12,8 +19,19 @@
 #  PHP_VERSION           = PHP version string eg 5.3.3-1ubuntu9.3
 #  PHPDEV_FOUND          = set to TRUE if all of the above has been found.
 #
-# Written by Paul Colby (http://colby.id.au), no rights reserved.
+
+#=============================================================================
+# Copyright 2011-2012 Paul Colby
 #
+# Distributed under the OSI-approved BSD License (the "License");
+# see accompanying file Copyright.txt for details.
+#
+# This software is distributed WITHOUT ANY WARRANTY; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the License for more information.
+#=============================================================================
+# (To distribute this file outside of CMake, substitute the full
+#  License text for the above reference.)
 
 FIND_PROGRAM(PHP_CONFIG_EXECUTABLE NAMES php-config5 php-config4 php-config)
 
