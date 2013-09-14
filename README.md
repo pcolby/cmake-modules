@@ -15,3 +15,6 @@ module is compatible with both PHP 4 and 5.
 
 For Linux distributions, this [`php-config`](http://php.net/manual/en/install.pecl.php-config.php)
 script is normally installed as part of some `php-dev` or `php-devel` package.
+
+The module is self-documented, so just read the documentation at the top of the [FindPHP.cmake](FindPHP.cmake)
+file itself.
