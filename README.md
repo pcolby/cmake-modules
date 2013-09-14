@@ -6,7 +6,7 @@ This is just my own collection of modules for [cmake](http://www.cmake.org/)
 ## Modules
 
 ### FindPHP
-This module finds if PHP is installed and determines where the include files and libraries are. 
+This module determines if PHP is installed, and if so the location of the PHP include files and libraries.
 
 Unlike the `FindPHP4` module included with cmake, this module uses the
 [`php-config`](http://php.net/manual/en/install.pecl.php-config.php) script to determine
