@@ -11,7 +11,7 @@ module is compatible with both PHP4 and PHP5.
 The module is self-documented, so just read the documentation at the top of the [FindPHP.cmake](FindPHP.cmake)
 file itself.
 
-It contains a minimal example. To build a shared library, and test:
+It contains a minimal example. To build a shared library, and test, and package (debian):
 
 ```
 mkdir build
@@ -19,6 +19,7 @@ cd build
 cmake ../example
 make
 make test
+make package
 ```
 
 Tip: On Linux distributions, the [`php-config`](http://php.net/manual/en/install.pecl.php-config.php)
