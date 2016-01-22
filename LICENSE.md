@@ -1,3 +1,4 @@
+Copyright (c) 2016, Jerry Jacobs
 Copyright (c) 2013, Paul Colby
 All rights reserved.
 
