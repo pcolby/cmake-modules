@@ -1,12 +1,32 @@
 # SPDX-FileCopyrightText: 2024 Paul Colby <git@colby.id.au>
 # SPDX-License-Identifier: BSD-3-Clause
+#[[
 
-# \todo Document.
-# \todo require min cmake version
+Find installed Qt documentation.
+
+Usage: find_package(QtDocs [REQUIRED] [COMPONENTS <qt-components>] [OPTIONAL_COMPONENTS <more-qt-components>])
+
+If successful, this module will set the following variables:
+
+* QtDocs_FOUND    - `TRUE`
+* QT_INSTALL_DOCS - root path of installed Qt docs.
+
+And for each requested module:
+
+* QtDocs_<Module>_FOUND - `TRUE` if each of the following were found.
+* QtDocs_<Module>_INDEX - path to the module documentation's XML index (`*.index`) file.
+* QtDocs_<Module>_QCH   - path to the module documentation's Qt Compresses Help (`*.qch`) file.
+* QtDocs_<Module>_TAGS  - path to the module documentation's TAGS (`*.tags`) file.
+
+See FindQtDocs.md for more detailed usage information.
+]]#
+
+# 3.15+ required for `list(POP_BACK ...)`
+cmake_minimum_required(VERSION 3.15...3.26 FATAL_ERROR)
 
 # Begin with some helpful debug messages.
 list(APPEND CMAKE_MESSAGE_INDENT "${CMAKE_FIND_PACKAGE_NAME}: ")
-set(CMAKE_MESSAGE_LOG_LEVEL DEBUG)
+#set(CMAKE_MESSAGE_LOG_LEVEL DEBUG)
 message(DEBUG "CMAKE_FIND_PACKAGE_NAME=${CMAKE_FIND_PACKAGE_NAME}")
 foreach(name REQUIRED;QUIETLY;REGISTRY_VIEW;VERSION;VERSION_EXACT;COMPONENTS)
   message(DEBUG "${CMAKE_FIND_PACKAGE_NAME}_FIND_${name}=${${CMAKE_FIND_PACKAGE_NAME}_FIND_${name}}")
