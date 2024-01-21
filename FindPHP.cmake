@@ -1,6 +1,6 @@
 # - Find PHP
 # This module finds if PHP is installed and determines where the include files
-# and libraries are. 
+# and libraries are.
 #
 # Note, unlike the FindPHP4 module, this module uses the php-config script to
 # determine information about the installed PHP configuration.  For Linux
