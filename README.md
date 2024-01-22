@@ -18,3 +18,7 @@ file itself.
 
 Tip: On Linux distributions, the [`php-config`](http://php.net/manual/en/install.pecl.php-config.php)
 script is normally installed as part of a `php-dev` or `php-devel` package.
+
+### [FindQtDocs](FindQtDocs.cmake)
+
+See [FintQtDocs.md](FindQtDocs.md) for docs.
