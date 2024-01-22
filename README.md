@@ -21,4 +21,4 @@ script is normally installed as part of a `php-dev` or `php-devel` package.
 
 ### [FindQtDocs](FindQtDocs.cmake)
 
-See [FintQtDocs.md](FindQtDocs.md) for docs.
+See [FindQtDocs.md](FindQtDocs.md) for docs.
