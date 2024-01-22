@@ -24,11 +24,7 @@ Or use CMake to fetch the the module from GitHub like:
 
 ```cmake
 include(FetchContent)
-FetchContent_Declare(
-  FindQtDocs
-  GIT_REPOSITORY "https://github.com/pcolby/cmake-modules"
-  GIT_TAG        "123f3b54b5049757830569ccb89ada8d6ecff41b"
-)
+FetchContent_Declare(FindQtDocs GIT_REPOSITORY "https://github.com/pcolby/cmake-modules" GIT_TAG "v1")
 FetchContent_MakeAvailable(FindQtDocs)
 list(PREPEND CMAKE_MODULE_PATH "${findqtdocs_SOURCE_DIR}")
 ```
@@ -68,11 +64,7 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Bluetooth)
 
 # Find Qt docs
 include(FetchContent)
-FetchContent_Declare(
-  FindQtDocs
-  GIT_REPOSITORY "https://github.com/pcolby/cmake-modules"
-  GIT_TAG        "fe64e68378f04cd6bd13e1c1f548bac58e316311"
-)
+FetchContent_Declare(FindQtDocs GIT_REPOSITORY "https://github.com/pcolby/cmake-modules" GIT_TAG "v1")
 FetchContent_MakeAvailable(FindQtDocs)
 list(PREPEND CMAKE_MODULE_PATH "${findqtdocs_SOURCE_DIR}")
 find_package(QtDocs REQUIRED COMPONENTS Core Bluetooth)
