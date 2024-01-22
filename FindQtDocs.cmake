@@ -11,9 +11,9 @@ If successful, this module will set the following variables:
 * QtDocs_FOUND    - `TRUE`
 * QT_INSTALL_DOCS - root path of installed Qt docs.
 
-And for each requested module:
+And for each requested Qt module:
 
-* QtDocs_<Module>_FOUND - `TRUE` if each of the following were found.
+* QtDocs_<Module>_FOUND - `TRUE` if the module documentation's TAGS file was found.
 * QtDocs_<Module>_INDEX - path to the module documentation's XML index (`*.index`) file.
 * QtDocs_<Module>_QCH   - path to the module documentation's Qt Compresses Help (`*.qch`) file.
 * QtDocs_<Module>_TAGS  - path to the module documentation's TAGS (`*.tags`) file.
@@ -26,7 +26,7 @@ cmake_minimum_required(VERSION 3.15...3.26 FATAL_ERROR)
 
 # Begin with some helpful debug messages.
 list(APPEND CMAKE_MESSAGE_INDENT "${CMAKE_FIND_PACKAGE_NAME}: ")
-#set(CMAKE_MESSAGE_LOG_LEVEL DEBUG)
+set(CMAKE_MESSAGE_LOG_LEVEL DEBUG)
 message(DEBUG "CMAKE_FIND_PACKAGE_NAME=${CMAKE_FIND_PACKAGE_NAME}")
 foreach(name REQUIRED;QUIETLY;REGISTRY_VIEW;VERSION;VERSION_EXACT;COMPONENTS)
   message(DEBUG "${CMAKE_FIND_PACKAGE_NAME}_FIND_${name}=${${CMAKE_FIND_PACKAGE_NAME}_FIND_${name}}")
@@ -73,7 +73,6 @@ if (QT_INSTALL_DOCS)
       message(DEBUG "Finding ${Component}")
     endif()
     string(TOLOWER "${Component}" component)
-    unset(_missingFiles)
     foreach(ext index;qch;tags)
       message(DEBUG "Looking for qt${component}.${ext} in ${QT_INSTALL_DOCS}")
       string(TOUPPER "${ext}" EXT)
@@ -86,15 +85,13 @@ if (QT_INSTALL_DOCS)
       message(DEBUG "${_variableName}: ${${_variableName}}")
       if(NOT ${_variableName})
         message(DEBUG "Failed to find qt${component}.${ext} in ${QT_INSTALL_DOCS}")
-        list(APPEND _missingFiles "qt${component}.${ext}")
-        if (${CMAKE_FIND_PACKAGE_NAME}_FIND_REQUIRED_${Component} AND NOT DEFINED _reason)
+        if (${CMAKE_FIND_PACKAGE_NAME}_FIND_REQUIRED_${Component} AND ext STREQUAL "tags" AND NOT DEFINED _reason)
           set(_reason "Failed to find qt${component}.${ext} in ${QT_INSTALL_DOCS}")
         endif()
+      elseif(ext STREQUAL "tags")
+        set("${CMAKE_FIND_PACKAGE_NAME}_${Component}_FOUND" TRUE)
       endif()
     endforeach()
-    if(NOT _missingFiles)
-      set("${CMAKE_FIND_PACKAGE_NAME}_${Component}_FOUND" TRUE)
-    endif()
   endforeach()
 endif()
 message(DEBUG "Reason: ${_reason}")

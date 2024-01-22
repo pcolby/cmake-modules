@@ -52,7 +52,7 @@ And for each requested CMake component (Qt module):
 
 |        Variable         |                     Descripton                   |        Example       |
 |-------------------------|--------------------------------------------------|----------------------|
-| `QtDocs_<Component>_FOUND` | indicates whether the doc was found  | `TRUE`
+| `QtDocs_<Component>_FOUND` | indicates whether the TAGS file was file  | `TRUE`
 | `QtDocs_<Component>_INDEX` | path to the documentation's XML index  | `/usr/share/qt5/doc/qtcore/qtcore.index` |
 | `QtDocs_<Component>_QCH`   | path to the documentation's QCH file   | `/usr/share/qt5/doc/qtcore/qtcore.qch`   |
 | `QtDocs_<Component>_TAGS`  | path to the documentation's TAGS file  | `/usr/share/qt5/doc/qtcore/qtcore.tags`  |
