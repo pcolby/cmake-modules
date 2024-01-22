@@ -72,21 +72,21 @@ if (QT_INSTALL_DOCS)
     if (NOT ${CMAKE_FIND_PACKAGE_NAME}_FIND_QUIETLY)
       message(DEBUG "Finding ${Component}")
     endif()
-    string(TOLOWER "${Component}" component)
+    string(TOLOWER "${Component}" _component)
     foreach(ext index;qch;tags)
-      message(DEBUG "Looking for qt${component}.${ext} in ${QT_INSTALL_DOCS}")
+      message(DEBUG "Looking for qt${_component}.${ext} in ${QT_INSTALL_DOCS}")
       string(TOUPPER "${ext}" EXT)
-      set(_variableName "${CMAKE_FIND_PACKAGE_NAME}_${Component}_${EXT}")
+      set(_variableName "${CMAKE_FIND_PACKAGE_NAME}_${Component}_${_EXT}")
       find_file("${_variableName}"
-        NAMES "qt${component}.${ext}"
+        NAMES "qt${_component}.${ext}"
         PATHS "${QT_INSTALL_DOCS}"
-        PATH_SUFFIXES "qt${component}"
+        PATH_SUFFIXES "qt${_component}"
         NO_DEFAULT_PATH)
       message(DEBUG "${_variableName}: ${${_variableName}}")
       if(NOT ${_variableName})
-        message(DEBUG "Failed to find qt${component}.${ext} in ${QT_INSTALL_DOCS}")
+        message(DEBUG "Failed to find qt${_component}.${ext} in ${QT_INSTALL_DOCS}")
         if (${CMAKE_FIND_PACKAGE_NAME}_FIND_REQUIRED_${Component} AND ext STREQUAL "tags" AND NOT DEFINED _reason)
-          set(_reason "Failed to find qt${component}.${ext} in ${QT_INSTALL_DOCS}")
+          set(_reason "Failed to find qt${_component}.${ext} in ${QT_INSTALL_DOCS}")
         endif()
       elseif(ext STREQUAL "tags")
         set("${CMAKE_FIND_PACKAGE_NAME}_${Component}_FOUND" TRUE)
@@ -96,6 +96,8 @@ if (QT_INSTALL_DOCS)
 endif()
 message(DEBUG "Reason: ${_reason}")
 list(POP_BACK CMAKE_MESSAGE_INDENT)
+unset(_component)
+unset(_EXT)
 
 # Report our success/failure.
 include(FindPackageHandleStandardArgs)
