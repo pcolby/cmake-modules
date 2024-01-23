@@ -75,7 +75,7 @@ if (QT_INSTALL_DOCS)
     string(TOLOWER "${Component}" _component)
     foreach(ext index;qch;tags)
       message(DEBUG "Looking for qt${_component}.${ext} in ${QT_INSTALL_DOCS}")
-      string(TOUPPER "${ext}" EXT)
+      string(TOUPPER "${ext}" _EXT)
       set(_variableName "${CMAKE_FIND_PACKAGE_NAME}_${Component}_${_EXT}")
       find_file("${_variableName}"
         NAMES "qt${_component}.${ext}"
