@@ -67,10 +67,10 @@ include(FetchContent)
 FetchContent_Declare(FindQtDocs GIT_REPOSITORY "https://github.com/pcolby/cmake-modules" GIT_TAG "v1")
 FetchContent_MakeAvailable(FindQtDocs)
 list(PREPEND CMAKE_MODULE_PATH "${findqtdocs_SOURCE_DIR}")
-find_package(QtDocs REQUIRED COMPONENTS Core Bluetooth)
+find_package(QtDocs COMPONENTS Core Bluetooth)
 
 # Include Qt doc tagfiles, if available.
-if (QtDocs_FOUND)
+if (QtDocs_FOUND) # Or use `REQUIRED` above.
   set(QT_DOCS_BASEURL "https://doc.qt.io/qt-${QT_VERSION_MAJOR}/")
   message(STATUS "Using Qt doc tagfiles ${QT_INSTALL_DOCS} => ${QT_DOCS_BASEURL}")
   set(DOX_TAGFILES "\\
